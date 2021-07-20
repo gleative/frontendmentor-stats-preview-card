@@ -1,91 +1,107 @@
-# Frontend Mentor - Stats preview card component
+# Frontend Mentor - Stats preview card component solution
 
-![Design preview for the Stats preview card component coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Stats preview card component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/stats-preview-card-component-8JqbgoU62). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-**To do this challenge, you need a basic understanding of HTML and CSS.**
+## Overview
 
-## The challenge
+### The challenge
 
-Your challenge is to build out this card component and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout depending on their device's screen size
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![Desktop](./screenshots/desktop.png)
+![Mobile](./screenshots/mobile.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## My process
+- I will solve this challenge by doing mobile-first approach. Reason I do this is I find it easier creating the structure of the HTML and setting up CSS by creating the mobile design first. As making it responsive to larger screens is an easier process in my opinion. But I also see many developers recommending using this approach.
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+### Built with
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
 
-## Building your project
+**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+### What I learned
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+## Using CSS variables
+I never used this much, but have also known about them. I noticed especially when doing only HTML and CSS I find the CSS variables quite useful. If I were to create this in React id probably not use CSS variables, as id use `Styled Components` to store colors, pixels ...
 
-## Deploying your project
+## Adding border radius to specific corners
+A problem I stumbleded upon in this project, was too achieve border-radius on the photo aswell. I thought since the image is a child of the main container `card-wrapper` it would also get the border-radius if I assigned border-radius to that CSS class. But seems that did not work! There might be a work around or better solution, but I ended up defining border-radius for specific corner of the image, depenedent on the size of the browser (Desktop has border-radius on top-right and bottom-right. While mobile is top-left, top-right).
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+I was happy to see, it follows same logic as `padding` and `margin` with it being: 
+```css {
+  border-radius: top, right, bottom, left
+}
+```
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+## Adding background color to image
+I never have used `url(<imgUrl>)` before. As I found this a bit confusing, regarding accessibility I am not sure if this is a good way of using a photo, but it might be possible to provide an `alt` tag in CSS also. I searched the web to find a simple way to achieve purple color on the photo. And stumbled across a method which only needs two lines:
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+```css 
+.purple-background-on-image {
+  background: url(`./images/image-header-desktop.jpg), var(--accent);
+  background-blend-mode: multiply;
+}
+```
+How this works, is that when you use `background-blend-mode: multiply` it will blend the color which you define AFTER the backgorund image, and the color will be applied onto the photo!
+I liked this solution as it is only two lines, and were not dependent on `linear-gradient` as many solutions I found were based on using that property.
+**Note: Only concern is the photo color is not exactly the same as the preview photo showed...**
 
-## Create a custom `README.md`
+## Background-size cover
+I did not understand why the photo did not want to take the full space it had, but then later realised that it is `background-size: cover` which does the magic for that! 
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+### Continued development
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+There are certain things I want to improve which are:
+`Better naming`
+  - I usually end up stopping for a second, as I never seem to find a name I find most desriptive. (E.G `flexin` is not a descriptive CSS selector name in my opinion, but I understand what it means, haha).
 
-## Submitting your solution
+`Background with image in CSS`
+  - I always use `<img>` HTML tag when using pictures, but this session helped me realize how this can be used only in CSS! (Ill have to check how accessibility friendly it is though).
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+`Write more readable and structured CSS code`
+  - Using CSS variables surely helped making it easier using more of the same values and keeping it a bit more structured. But I feel that I maybe use to many CSS selectors, or could have done thing differently... but I think the solution is OK (I am quite the perfectionist... it can be a bad habit of never being satisfied 😂).
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+`Create this using a framework like React`
+  - I mostly work with Angular (only because of my job), but really want to try this in React! I usually tend to only solve it in vanilla way, since I am most comfortable with that, and libraries are not needed... which I prefer, since I am lazy....
 
-## Sharing your solution
+### Useful resources
 
-There are multiple places you can share your solution:
+- [W3Schools](www.w3schools.com) - This helped me with understanding the different properties `background` has to offer
+- [Stack Overflow - Add overlay to background image](https://stackoverflow.com/questions/36679649/how-to-add-a-color-overlay-to-a-background-image/36679903) - The answer in this post surely introduced me to a fast and easy way to add a single color overlay to a image! 
+- [MDN - background-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode) - My favorite documentation website when needing to check how different properties and attributes work!
 
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+## Author
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/gleative)
+- Twitter - [@yourusername](https://www.twitter.com/gleative)
