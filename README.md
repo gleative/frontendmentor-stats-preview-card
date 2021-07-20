@@ -101,5 +101,5 @@ There are certain things I want to improve which are:
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/gleative)
-- Twitter - [@yourusername](https://www.twitter.com/gleative)
+- Frontend Mentor - [@gleative](https://www.frontendmentor.io/profile/gleative)
+- Twitter - [@gleative](https://www.twitter.com/gleative)
