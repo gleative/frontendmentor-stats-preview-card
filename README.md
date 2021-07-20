@@ -16,8 +16,6 @@ This is a solution to the [Stats preview card component challenge on Frontend Me
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -50,10 +48,10 @@ Users should be able to:
 
 ### What I learned
 
-## Using CSS variables
+#### Using CSS variables
 I never used this much, but have also known about them. I noticed especially when doing only HTML and CSS I find the CSS variables quite useful. If I were to create this in React id probably not use CSS variables, as id use `Styled Components` to store colors, pixels ...
 
-## Adding border radius to specific corners
+#### Adding border radius to specific corners
 A problem I stumbleded upon in this project, was too achieve border-radius on the photo aswell. I thought since the image is a child of the main container `card-wrapper` it would also get the border-radius if I assigned border-radius to that CSS class. But seems that did not work! There might be a work around or better solution, but I ended up defining border-radius for specific corner of the image, depenedent on the size of the browser (Desktop has border-radius on top-right and bottom-right. While mobile is top-left, top-right).
 
 I was happy to see, it follows same logic as `padding` and `margin` with it being: 
@@ -62,7 +60,7 @@ I was happy to see, it follows same logic as `padding` and `margin` with it bein
 }
 ```
 
-## Adding background color to image
+#### Adding background color to image
 I never have used `url(<imgUrl>)` before. As I found this a bit confusing, regarding accessibility I am not sure if this is a good way of using a photo, but it might be possible to provide an `alt` tag in CSS also. I searched the web to find a simple way to achieve purple color on the photo. And stumbled across a method which only needs two lines:
 
 ```css 
@@ -75,7 +73,7 @@ How this works, is that when you use `background-blend-mode: multiply` it will b
 I liked this solution as it is only two lines, and were not dependent on `linear-gradient` as many solutions I found were based on using that property.
 **Note: Only concern is the photo color is not exactly the same as the preview photo showed...**
 
-## Background-size cover
+#### Background-size cover
 I did not understand why the photo did not want to take the full space it had, but then later realised that it is `background-size: cover` which does the magic for that! 
 
 ### Continued development
